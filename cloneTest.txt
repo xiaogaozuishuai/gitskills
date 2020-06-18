@@ -1,0 +1,27 @@
+
+
+
+
+BarCompTabelComposite(Composite parent, String[] tableHeader,
+			String[] tableProperties, String labelText, String title) {
+		super(parent, SWT.NONE);
+		setLayout(new GridLayout(1, true));
+
+		Label labelTitle = new Label(this, SWT.NONE);
+		labelTitle.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false,false));
+		labelTitle.setText(title);
+
+		pageViewer = new PageDataTableViewer<DeptCompInputModel>(this);
+		pageViewer.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+
+		table = pageViewer.getDataTableViewer();
+		table.setTableHeader(tableHeader);
+		table.setColumnProperties(tableProperties);
+		table.setColumnWidth(1, 100);
+
+		pageViewer.setPageProvider(this);
+		this.title = labelText;
+		label = new Label(this, SWT.NONE);
+		label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
+		label.setText(labelText);
+	}
